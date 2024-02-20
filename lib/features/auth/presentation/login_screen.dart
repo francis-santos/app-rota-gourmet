@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rota_gourmet/app_routes.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -52,7 +51,6 @@ class LoginFormState extends State<LoginForm> {
         ElevatedButton(
           onPressed: () {
             // Chamar a lógica de autenticação aqui
-            Navigator.pushReplacementNamed(context, AppRoutes.dashboard);
           },
           child: const Text('Login'),
         ),
