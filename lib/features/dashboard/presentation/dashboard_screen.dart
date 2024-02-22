@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
-
   @override
   DashboardScreenState createState() => DashboardScreenState();
 }
@@ -49,14 +47,35 @@ class DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      body: GoogleMap(
-        onMapCreated: (GoogleMapController controller) {
-          _controller = controller;
-        },
-        initialCameraPosition: const CameraPosition(
-          target: LatLng(37.42796133580664, -122.085749655962),
-          zoom: 14.0,
-        ),
+      body: Stack(
+        children: [
+          GoogleMap(
+            onMapCreated: (GoogleMapController controller) {
+              _controller = controller;
+            },
+            initialCameraPosition: const CameraPosition(
+              target: LatLng(37.42796133580664, -122.085749655962),
+              zoom: 14.0,
+            ),
+          ),
+          Positioned(
+            top: 16.0,
+            left: 16.0,
+            right: 16.0,
+            child: Container(
+              color: Colors.white,
+              child: TextField(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  hintText: 'Pesquisar',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
