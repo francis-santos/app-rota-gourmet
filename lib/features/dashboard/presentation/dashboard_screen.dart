@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:rota_gourmet/app_routes.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -34,9 +35,9 @@ class DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Favoritos'),
               onTap: () {
-                // Implemente a navegação para o item 1 aqui
+                Navigator.pushNamed(context, AppRoutes.favorites);
               },
             ),
             ListTile(
