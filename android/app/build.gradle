@@ -12,6 +12,11 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def flutterMinSdkVersion = localProperties.getProperty('flutter.minSdkVersion')
+if (flutterMinSdkVersion == null) {
+    flutterMinSdkVersion = 20
+}
+
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -21,6 +26,8 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
+
+def googleMapsApiKey = localProperties.getProperty('flutter.google_maps_api_key')
 
 android {
     namespace "com.example.rota_gourmet"
@@ -45,10 +52,11 @@ android {
         applicationId "com.example.rota_gourmet"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion flutterMinSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        resValue "string", "google_maps_api_key", localProperties.getProperty("google.maps.api.key")
     }
 
     buildTypes {
