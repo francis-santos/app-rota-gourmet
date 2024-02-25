@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rota_gourmet/app_routes.dart';
+import 'package:rota_gourmet/AppLocalizations.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -14,9 +15,11 @@ class DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations? localizations = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text(localizations != null ? localizations.translate('appTitle') : ""),
       ),
       drawer: Drawer(
         child: ListView(
@@ -35,15 +38,15 @@ class DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             ListTile(
-              title: const Text('Favoritos'),
+              title: Text(localizations != null ? localizations.translate('favorites') : ""),
               onTap: () {
                 Navigator.pushNamed(context, AppRoutes.favorites);
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: Text(localizations != null ? localizations.translate('settings') : ""),
               onTap: () {
-                // Implemente a navegação para o item 2 aqui
+                Navigator.pushNamed(context, AppRoutes.settings);
               },
             ),
             // Adicione mais itens conforme necessário
@@ -66,14 +69,19 @@ class DashboardScreenState extends State<DashboardScreen> {
             left: 16.0,
             right: 16.0,
             child: Container(
-              color: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: 'Pesquisar',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                  hintText: localizations?.translate('searchHint'),
+                  border: InputBorder.none, // Remove a borda padrão
+                  filled: true, // Preenche o container com a cor de fundo
+                  fillColor: Colors.white, // Cor de fundo do container
+                  contentPadding: EdgeInsets.zero, // Remove o espaçamento interno do TextField
                 ),
               ),
             ),

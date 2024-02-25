@@ -1,0 +1,10 @@
+{
+  "appTitle": "Rota Gourmet",
+  "dashboard": "Dashboard",
+  "favorites": "Favorites",
+  "settings": "Settings",
+  "dashboardWelcomeMessage": "Welcome to Dashboard screen!",
+  "favoritesPageMessage": "Favorites Page",
+  "settingsPageMessage": "Settings Page",
+  "searchHint": "Search"
+}
