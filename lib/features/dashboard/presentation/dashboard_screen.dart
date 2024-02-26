@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rota_gourmet/app_routes.dart';
 import 'package:rota_gourmet/AppLocalizations.dart';
+import 'package:rota_gourmet/presentation/custom_drawer.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -21,38 +22,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         title: Text(localizations != null ? localizations.translate('appTitle') : ""),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text(localizations != null ? localizations.translate('favorites') : ""),
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.favorites);
-              },
-            ),
-            ListTile(
-              title: Text(localizations != null ? localizations.translate('settings') : ""),
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.settings);
-              },
-            ),
-            // Adicione mais itens conforme necessário
-          ],
-        ),
-      ),
+      drawer: const CustomDrawer(),
       body: Stack(
         children: [
           GoogleMap(
@@ -75,6 +45,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: TextField(
+                textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
                   hintText: localizations?.translate('searchHint'),
