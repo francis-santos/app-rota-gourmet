@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rota_gourmet/app_routes.dart';
 import 'package:rota_gourmet/AppLocalizations.dart';
 import 'package:rota_gourmet/presentation/custom_drawer.dart';
 
