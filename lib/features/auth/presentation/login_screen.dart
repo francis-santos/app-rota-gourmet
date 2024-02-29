@@ -6,13 +6,28 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: LoginForm(),
+    return const Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Rota Gourmet',
+                  style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+                SizedBox(height: 40.0),
+                LoginForm(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -38,23 +53,59 @@ class LoginFormState extends State<LoginForm> {
           controller: _emailController,
           decoration: const InputDecoration(
             labelText: 'Email',
+            labelStyle: TextStyle(color: Colors.grey),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
           ),
         ),
-        const SizedBox(height: 16.0),
+        const SizedBox(height: 20.0),
         TextField(
           controller: _passwordController,
           obscureText: true,
           decoration: const InputDecoration(
-            labelText: 'Password',
+            labelText: 'Senha',
+            labelStyle: TextStyle(color: Colors.grey),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
           ),
         ),
-        const SizedBox(height: 16.0),
+        const SizedBox(height: 30.0),
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.red, // Button color
+            foregroundColor: Colors.white, // Text color
+          ),
           onPressed: () {
-            // Chamar a lógica de autenticação aqui
+            // Implementar lógica de autenticação aqui
             Navigator.pushReplacementNamed(context, AppRoutes.dashboard);
           },
-          child: const Text('Login'),
+          child: const Text('Entrar'),
+        ),
+        TextButton(
+          onPressed: () {
+            // Implementar funcionalidade de Esqueci minha senha
+          },
+          child: const Text(
+            'Esqueci minha senha',
+            style: TextStyle(color: Colors.red),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            // Implementar funcionalidade de Cadastre-se
+          },
+          child: const Text(
+            'Cadastre-se',
+            style: TextStyle(color: Colors.red),
+          ),
         ),
       ],
     );
